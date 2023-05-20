@@ -10,14 +10,17 @@ import java.nio.file.Paths;
 
 public class JuniversalchardetApplication {
     public static void main(String[] args) {
-        // Shift_JIS
-        detectCharset(Paths.get("text/Shift_JIS.txt"));
-
         // UTF-8
         detectCharset(Paths.get("text/UTF-8.txt"));
 
+        // UTF-8 with simple way
+        detectCharsetWithSimpleWay(Paths.get("text/UTF-8.txt"));
+
+        // Shift_JIS
+        detectCharset(Paths.get("text/Shift_JIS.txt"));
+
         // EUC-JP with simple way
-        detectCharsetWithSimpleWay(Paths.get("text/EUC-JP.txt"));
+        detectCharset(Paths.get("text/EUC-JP.txt"));
     }
 
     private static void detectCharset(Path path) {
@@ -46,7 +49,7 @@ public class JuniversalchardetApplication {
         try {
             String encoding = UniversalDetector.detectCharset(path);
             if (encoding != null) {
-                System.out.println("Encoding: " + encoding);
+                System.out.println("Encoding (with simple way): " + encoding);
             } else {
                 System.out.println("No encoding detected");
             }
